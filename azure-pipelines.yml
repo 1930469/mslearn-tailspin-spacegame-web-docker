@@ -6,7 +6,8 @@ variables:
   webRepository: 'web'
   tag: '$(Build.BuildId)'
 
-  stage: Build
+stages:
+- stage: Build
   displayName: Build and push
   jobs:
     - job: Build
@@ -25,7 +26,7 @@ variables:
             tags: |
               $(tag)
 
-  stage: Deploy
+- stage: Deploy
   displayName: Deploy the container
   dependsOn: Build
   jobs:
